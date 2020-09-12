@@ -69,7 +69,7 @@ todoApp.controller('AppCtrl',[
             var getid = this.id;
             var newList = []
             for (var item of $scope.todoList){
-                if(item['id']!=getid){
+                if(item.id!=getid){
                     newList.push(item);
                 }
             }
@@ -80,7 +80,7 @@ todoApp.controller('AppCtrl',[
     var findPosition = function (getid){
         var item = 0;
         for (item=0;item<$scope.todoList.length;item++){
-            if($scope.todoList[item]["id"]==getid){
+            if($scope.todoList[item].id==getid){
                 return item;
             }
         }

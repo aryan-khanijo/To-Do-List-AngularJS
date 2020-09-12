@@ -1,0 +1,88 @@
+html, body{
+	-ms-overflow-style: none;  /* IE and Edge */
+	scrollbar-width: none;  /* Firefox */
+}
+html::-webkit-scrollbar{display: none;}
+
+.md-input-focused .md-input{border-color: #00bcd4 !important;}
+
+.md-input-focused label{color: #00bcd4 !important;}
+
+.note{
+	padding: 10px;
+	border-radius: 25px;
+	margin: 5px;
+}
+
+.notes{
+	margin: auto !important;
+	margin-top: 35px !important;
+}
+
+.notes>div{box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);}
+
+.note-title{font-size: 18px;}
+.btn{text-align: right;}
+.btn>button{
+	border: 0;
+	outline: none; 
+	margin: 0 6px !important;
+	background-color: transparent;
+	color: inherit;
+}
+
+.note-content{
+	padding: 10px;
+	border-radius: 25px;
+	margin: 5px;
+	word-wrap: break-word !important;
+	overflow-y: auto;
+	max-height: 150px;
+	border: none;
+	outline: none;
+}
+
+.note-content::-webkit-scrollbar{display: none;}
+
+.complete{
+	background-color: rgba(0, 0, 0, 0.7) !important;
+	color: white !important;
+}
+
+.strike-through{text-decoration: line-through !important;}
+
+.complete>.note-content{
+	background-color: rgba(0, 0, 0, 0.4) !important;
+	color: white !important;
+}
+
+.note-content[contenteditable]{outline: 0px solid transparent;}
+
+.alert {
+	padding: 20px;
+	background-color: #f44336;
+	color: white;
+}
+
+.closebtn {
+	margin-left: 15px;
+	color: white;
+	font-weight: bold;
+	float: right;
+	font-size: 22px;
+	line-height: 20px;
+	cursor: pointer;
+	transition: 0.3s;
+}
+  
+.closebtn:hover {color: black;}
+
+
+.error-message{
+	color: #a94442;
+	background-color: #f2dede;
+	border-color: #a94442 !important;
+	border-radius: 4px;
+	border: 1px solid;
+	padding: 2px;
+}

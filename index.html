@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	  <!-- Angular Material style sheet -->
+	<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.12/angular-material.min.css">
+	<!-- W3 Theme StyleSheet -->
+	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+	<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-cyan.css">
+	<!-- Matrial Icons -->
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<!-- Mystyle Sheet -->
+	<link rel="stylesheet" href="./static/style.css">
+	<!-- JQ Script -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body ng-app="NewApp" ng-controller="AppCtrl">
+	<div class="w3-theme w3-card w3-container" layout="row" layout-align="center center">
+		<h1>To Do App</h1>
+	</div>
+	<div flex="60" flex-offset="20" layout="column" class="w3-text-theme">
+		<h2>Add item</h2>
+		<form name="addnote">
+			<md-input-container class="md-block" flex-gt-sm>
+				<label>Title</label>
+				<input id="title" name="title" ng-model="title">
+			</md-input-container>
+			<md-input-container class="md-block" flex-gt-sm>
+				<label>Content</label>
+				<textarea id="content" name="content" ng-model="content"></textarea>
+			</md-input-container>
+		</form>
+		<div layout="row" layout-align="end end">
+			<md-button id="addbtn" class="add w3-theme" ng-click="addToList()">Add</md-button>
+		</div>
+		<div id="Alert" class="alert" ng-if="errorMessage">
+		<span ng-click="hideError()" class="closebtn">&times;</span> 
+			<strong>Alert!</strong> You need to enter Title and content.
+		</div>
+	</div>
+	<div flex="75" style="flex-wrap: wrap;" class="notes" layout="row" id="currnotes" layout-align="center start">
+		<div ng-repeat = "notes in todoList" class="flex-90 flex-gt-xs-40 flex-md-30 flex-gt-md-20 layout-column note {{notes.divTheme}}" ng-class="{'complete': notes.completeStatus}">
+			<div class="flex-100 layout-column">
+				<div class="note-title" ng-class="{'strike-through': notes.completeStatus}" ng-bind="notes.title"></div>
+					<i class="material-icons btn">
+						<button ng-click="notes.done()" ng-bind="notes.checkIcon"></button>
+						<button ng-click="notes.change()" ng-bind="notes.editIcon"></button>
+						<button ng-click="notes.remove()" ng-bind="notes.deleteIcon"></button>
+					</i>
+				</div>
+			<div class="error-message" ng-if="notes.error">You Cannot leave the content empty.</div>
+			<input readonly ng-model="notes.content" id="{{notes.contId()}}" ng-class="{'strike-through': notes.completeStatus}" class="note-content {{notes.contTheme}}">
+		</div>
+	</div>
+	<!-- Angular Material requires Angular.js Libraries -->
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.6/angular.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.6/angular-animate.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.6/angular-aria.min.js"></script>
+	<!-- Angular Material Library -->
+	<script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.12/angular-material.min.js"></script>
+	<!-- <script src="./static/script.js"></script>   -->
+	<script src="./static/app.js"></script>
+</body>
+</html>

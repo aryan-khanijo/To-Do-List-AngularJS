@@ -49,7 +49,7 @@
 					</i>
 				</div>
 			<div class="error-message" ng-if="notes.error">You Cannot leave the content empty.</div>
-			<textarea readonly ng-model="notes.content" id="{{notes.contId()}}" ng-class="{'strike-through': notes.completeStatus}" class="note-content {{notes.contTheme}}"></textarea>
+			<input readonly ng-model="notes.content" id="{{notes.contId()}}" ng-class="{'strike-through': notes.completeStatus}" class="note-content {{notes.contTheme}}">
 		</div>
 	</div>
 	<!-- Angular Material requires Angular.js Libraries -->

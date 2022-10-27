@@ -1,7 +1,7 @@
-var jq = $.noConflict();
+let jq = $.noConflict();
 todoApp.factory('prepareToDoObject',[
     function (){
-        var todo = function (id, title, content, colorcode, $scope){
+        let todo = function (id, title, content, colorcode, completeStatus, $scope){
             angular.extend(this, {
                 id: id,
                 title: title,
@@ -17,14 +17,15 @@ todoApp.factory('prepareToDoObject',[
                 contentCopy: "",
                 contId: function(){return "content-"+this.id;},
                 change: function(){
-                    var getid = this.id;
-                    var item = findItem(getid, $scope);
+                    let getid = this.id;
+                    let item = findItem(getid, $scope);
                     if(item.editable){
                         if (item.content === ""){
                             item.content = item.contentCopy;
                             this.error = true;
                         }
                         else{
+                            $scope.updateNote(item);
                             item.editIcon = "edit";
                             item.editable = false;
                             this.error = false;
@@ -40,21 +41,24 @@ todoApp.factory('prepareToDoObject',[
                     }
                 },
                 done: function(){
-                    var getid = this.id;
-                    var item = findItem(getid, $scope);
+                    let getid = this.id;
+                    let item = findItem(getid, $scope);
                     if(item.completeStatus){
+                        $scope.updateNote(item);
                         item.checkIcon = "check";
                         item.completeStatus = false;
                     }
                     else{
+                        $scope.updateNote(item);
                         item.checkIcon = "close";
                         item.completeStatus = true;
                     }
                 },
                 remove: function(){
-                    var getid = this.id;
-                    var newList = []
-                    for (var item of $scope.todoList){
+                    let getid = this.id;
+                    $scope.deleteNote(this.id);
+                    let newList = []
+                    for (let item of $scope.todoList){
                         if(item.id!=getid){
                             newList.push(item);
                         }
@@ -67,17 +71,17 @@ todoApp.factory('prepareToDoObject',[
         return todo;
 
         function getDivTheme(colorcode){
-            var notescardbgTheme = ["w3-theme-d1","w3-theme-d2","w3-theme-d3","w3-theme-d4"];
+            let notescardbgTheme = ["w3-theme-d1","w3-theme-d2","w3-theme-d3","w3-theme-d4"];
             return notescardbgTheme[colorcode];
         };
 
         function getContTheme(colorcode){
-            var notescontbgTheme = ["w3-theme-l4","w3-theme-l3","w3-theme-l2","w3-theme-l1"];
+            let notescontbgTheme = ["w3-theme-l4","w3-theme-l3","w3-theme-l2","w3-theme-l1"];
             return notescontbgTheme[colorcode];
         };
 
         function findItem (getid, $scope){
-            var item = 0;
+            let item = 0;
             for (item=0;item<$scope.todoList.length;item++){
                 if($scope.todoList[item].id==getid){
                     return $scope.todoList[item];
